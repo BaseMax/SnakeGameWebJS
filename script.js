@@ -52,7 +52,7 @@ const update = () => {
         alert("Game Over");
         location.reload();
     }
-}
+};
 
 const changeDirection = (e) => {
     if (e.code === "ArrowUp" && velocityY !== 1) {
@@ -68,12 +68,12 @@ const changeDirection = (e) => {
         velocityX = 1;
         velocityY = 0;
     }
-}
+};
 
 const placeFood = () => {
     foodX = Math.floor(Math.random() * cols) * blockSize;
     foodY = Math.floor(Math.random() * rows) * blockSize;
-}
+};
 
 const load = () => {
     board = document.getElementById("board");
