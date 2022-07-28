@@ -1,1 +1,1 @@
-# SnakeGameWebJS
+# Snake Game Web JS
