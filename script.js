@@ -1,7 +1,8 @@
 // Const
-const blockSize = 25;
 const rows = 20;
 const cols = 20;
+const blockSize = 25;
+const supportsTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
 // Board
 let board;
@@ -24,9 +25,6 @@ let foodY;
 // Touch
 let xDown = null;
 let yDown = null;
-
-// Const variables
-const supportsTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
 // Functions
 const update = () => {
