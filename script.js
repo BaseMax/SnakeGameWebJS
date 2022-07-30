@@ -22,7 +22,7 @@ let foodX;
 let foodY;
 
 // Touch
-let xDown = null;                                                        
+let xDown = null;
 let yDown = null;
 
 // Const variables
@@ -100,6 +100,7 @@ const getTouches = (evt) => {
 
 const handleTouchStart = (evt) => {
     const firstTouch = getTouches(evt)[0];
+    console.log("handleTouchStart: ", firstTouch);
     xDown = firstTouch.clientX;
     yDown = firstTouch.clientY;
 };
@@ -116,17 +117,21 @@ const handleTouchMove = (evt) => {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
         if ( xDiff > 0 ) {
             /* right swipe */
+            console.log("Right");
             document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowRight'}));
         } else {
             /* left swipe */
+            console.log("Left");
             document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowLeft'}));
         }
     } else {
         if ( yDiff > 0 ) {
             /* down swipe */
+            console.log("Down");
             document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowDown'}));
         } else {
             /* up swipe */
+            console.log("Up");
             document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowUp'}));
         }
     }
