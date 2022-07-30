@@ -1,3 +1,7 @@
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+
 // Const
 const blockSize = 25;
 const rows = 20;
@@ -20,6 +24,13 @@ let snakeBody = [];
 // Food
 let foodX;
 let foodY;
+
+// Touch
+let xDown = null;                                                        
+let yDown = null;
+
+// Const variables
+const supportsTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
 // Functions
 const update = () => {
@@ -86,5 +97,51 @@ const load = () => {
     setInterval(update, 100);
 };
 
+const getTouches = (evt) => {
+  return evt.touches || // browser API
+         evt.originalEvent.touches; // jQuery
+};
+
+const handleTouchStart = (evt) => {
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+};
+
+const handleTouchMove = (evt) => {
+    if (! xDown || ! yDown ) return;
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+    
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+        if ( xDiff > 0 ) {
+            /* right swipe */
+            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowRight'}));
+        } else {
+            /* left swipe */
+            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowLeft'}));
+        }
+    } else {
+        if ( yDiff > 0 ) {
+            /* down swipe */
+            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowDown'}));
+        } else {
+            /* up swipe */
+            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowUp'}));
+        }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+};
+
 // Initialization
 window.addEventListener("load", load);
+if (supportsTouch) {
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+}
