@@ -1,7 +1,3 @@
-document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
-
-
 // Const
 const blockSize = 25;
 const rows = 20;
