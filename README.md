@@ -1,6 +1,8 @@
 # Snake Game Web JS
 
-A web-based game designed by JavaScript is a snake game where you can eat food and grow. So this game supports both Phones and Desktops.
+A web-based game designed by JavaScript is a snake game where you can eat food and grow. By touching the screen or using arrow keys you can move the snake.
+
+This game supports both Phones and Desktops as well.
 
 Demo: https://basemax.github.io/SnakeGameWebJS/
 
