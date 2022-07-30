@@ -110,7 +110,7 @@ const handleTouchStart = (evt) => {
 };
 
 const handleTouchMove = (evt) => {
-    if (! xDown || ! yDown ) return;
+    if (!xDown || ! yDown) return;
 
     var xUp = evt.touches[0].clientX;
     var yUp = evt.touches[0].clientY;
@@ -118,7 +118,7 @@ const handleTouchMove = (evt) => {
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
     
-    if (Math.abs( xDiff ) > Math.abs( yDiff )) {
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
             /* right swipe */
             console.log("Right");
