@@ -61,20 +61,24 @@ const update = () => {
     }
 };
 
-const changeDirection = (e) => {
-    if (e.code === "ArrowUp" && velocityY !== 1) {
+const applyKey = (key) => {
+    if (key === "ArrowUp" && velocityY !== 1) {
         velocityX = 0;
         velocityY = -1;
-    } else if (e.code === "ArrowDown" && velocityY !== -1) {
+    } else if (key === "ArrowDown" && velocityY !== -1) {
         velocityX = 0;
         velocityY = 1;
-    } else if (e.code === "ArrowLeft" && velocityX !== 1) {
+    } else if (key === "ArrowLeft" && velocityX !== 1) {
         velocityX = -1;
         velocityY = 0;
-    } else if (e.code === "ArrowRight" && velocityX !== -1) {
+    } else if (key === "ArrowRight" && velocityX !== -1) {
         velocityX = 1;
         velocityY = 0;
     }
+};
+
+const changeDirection = (e) => {
+    applyKey(e.code);
 };
 
 const placeFood = () => {
@@ -114,25 +118,25 @@ const handleTouchMove = (evt) => {
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
     
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-        if ( xDiff > 0 ) {
+    if (Math.abs( xDiff ) > Math.abs( yDiff )) {
+        if (xDiff > 0) {
             /* right swipe */
             console.log("Right");
-            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowRight'}));
+            applyKey("ArrowRight");
         } else {
             /* left swipe */
             console.log("Left");
-            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowLeft'}));
+            applyKey("ArrowLeft");
         }
     } else {
-        if ( yDiff > 0 ) {
+        if (yDiff > 0) {
             /* down swipe */
             console.log("Down");
-            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowDown'}));
+            applyKey("ArrowDown");
         } else {
             /* up swipe */
             console.log("Up");
-            document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'ArrowUp'}));
+            applyKey("ArrowUp");
         }
     }
     /* reset values */
