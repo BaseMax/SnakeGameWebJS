@@ -8,4 +8,9 @@ Demo: https://basemax.github.io/SnakeGameWebJS/
 
 [![](preview.jpg)](https://basemax.github.io/SnakeGameWebJS/)
 
+## TODO
+
+- CSS: Increase width, and height of the board
+- CSS: Put the board on center of the page
+
 Source: https://www.youtube.com/watch?v=baBq5GAL0_U
